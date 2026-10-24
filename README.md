@@ -95,6 +95,9 @@ tiny-diary/
 - `README.md`: この説明ファイル
 - `LICENSE`: MITライセンス
 
+## メモ
+このリポジトリは、学習ログアプリに育てるための土台として使います。
+
 ## ライセンス
 
 MIT License
