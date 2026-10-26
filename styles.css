@@ -1,16 +1,16 @@
 :root {
-  --paper: #fffdf7;
-  --ink: #2d2a26;
-  --muted: #76716b;
-  --line: #e5ddd0;
+  --paper: #f4f7f2;
+  --ink: #26372f;
+  --muted: #6d7a72;
+  --line: #dce5dc;
   --panel: #ffffff;
-  --pink: #f47fa2;
-  --pink-dark: #cd4772;
-  --mint: #79c7b3;
-  --yellow: #ffd166;
-  --sky: #6aa9ff;
-  --lavender: #b28dff;
-  --shadow: 0 18px 50px rgba(63, 44, 29, 0.14);
+  --teal: #5ca184;
+  --teal-dark: #34765a;
+  --mint: #9ccdb1;
+  --yellow: #e8bd65;
+  --sky: #79b5c8;
+  --lavender: #aaa3d0;
+  --shadow: 0 18px 50px rgba(39, 67, 49, 0.1);
   font-family:
     "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
 }
@@ -24,8 +24,8 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    linear-gradient(135deg, rgba(244, 127, 162, 0.16), transparent 34%),
-    linear-gradient(315deg, rgba(121, 199, 179, 0.18), transparent 38%),
+    linear-gradient(135deg, rgba(92, 161, 132, 0.15), transparent 34%),
+    linear-gradient(315deg, rgba(232, 189, 101, 0.14), transparent 38%),
     var(--paper);
 }
 
@@ -88,7 +88,7 @@ button {
 
 .eyebrow {
   margin: 0 0 6px;
-  color: var(--pink-dark);
+  color: var(--teal-dark);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -118,7 +118,7 @@ h2 {
   min-height: 42px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff8e7;
+  background: #f3f8f2;
   color: var(--muted);
   font-size: 0.86rem;
   font-weight: 700;
@@ -133,7 +133,7 @@ h2 {
   font-size: 1.25rem;
 }
 
-.diary-form {
+.study-form {
   display: grid;
   gap: 13px;
 }
@@ -152,7 +152,7 @@ textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fffefb;
+  background: #fbfdf9;
   color: var(--ink);
   outline: none;
   transition:
@@ -178,8 +178,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--pink);
-  box-shadow: 0 0 0 4px rgba(244, 127, 162, 0.16);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(92, 161, 132, 0.17);
   background: #fff;
 }
 
@@ -205,7 +205,7 @@ textarea:focus {
   gap: 5px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fffefb;
+  background: #fbfdf9;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 800;
@@ -220,7 +220,7 @@ textarea:focus {
 
 .mood-option:hover {
   transform: translateY(-1px);
-  border-color: rgba(244, 127, 162, 0.6);
+  border-color: rgba(92, 161, 132, 0.6);
 }
 
 .mood-option input {
@@ -231,10 +231,10 @@ textarea:focus {
 }
 
 .mood-option:has(input:checked) {
-  border-color: var(--pink);
-  background: #fff1f6;
-  color: var(--pink-dark);
-  box-shadow: 0 10px 22px rgba(244, 127, 162, 0.18);
+  border-color: var(--teal);
+  background: #edf6ef;
+  color: var(--teal-dark);
+  box-shadow: 0 10px 22px rgba(52, 118, 90, 0.14);
 }
 
 .mood-face {
@@ -272,14 +272,14 @@ textarea:focus {
 }
 
 .primary-button {
-  background: var(--pink);
+  background: var(--teal);
   color: white;
-  box-shadow: 0 12px 24px rgba(205, 71, 114, 0.22);
+  box-shadow: 0 12px 24px rgba(52, 118, 90, 0.2);
 }
 
 .primary-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(205, 71, 114, 0.28);
+  box-shadow: 0 14px 28px rgba(52, 118, 90, 0.25);
 }
 
 .ghost-button,
@@ -291,7 +291,7 @@ textarea:focus {
 
 .ghost-button:hover,
 .entry-actions button:hover {
-  border-color: var(--pink);
+  border-color: var(--teal);
 }
 
 .summary-row {
@@ -306,7 +306,7 @@ textarea:focus {
   margin-bottom: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(135deg, #fff8e7, #fffefb);
+  background: linear-gradient(135deg, #f2f7ed, #fbfdf9);
   padding: 16px;
 }
 
@@ -329,8 +329,8 @@ textarea:focus {
   border: 1px solid rgba(229, 221, 208, 0.86);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 248, 231, 0.42)),
-    #fffefb;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(242, 247, 237, 0.55)),
+    #fbfdf9;
 }
 
 .rhythm-svg {
@@ -355,12 +355,12 @@ textarea:focus {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 5;
-  filter: drop-shadow(0 7px 10px rgba(205, 71, 114, 0.18));
+  filter: drop-shadow(0 7px 10px rgba(52, 118, 90, 0.16));
 }
 
 .rhythm-point circle {
   fill: #fffefb;
-  stroke: var(--pink);
+  stroke: var(--teal);
   stroke-width: 3;
 }
 
@@ -388,7 +388,7 @@ textarea:focus {
   min-height: 34px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: #fffefb;
+  background: #fbfdf9;
   padding: 0 11px;
   color: var(--muted);
   font-size: 0.84rem;
@@ -420,7 +420,7 @@ textarea:focus {
   gap: 6px;
   border: 1px dashed #dccfbd;
   border-radius: 8px;
-  background: rgba(255, 248, 231, 0.62);
+  background: rgba(242, 247, 237, 0.72);
   padding: 20px;
   color: var(--muted);
 }
@@ -442,7 +442,7 @@ textarea:focus {
   gap: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fffefb;
+  background: #fbfdf9;
   padding: 16px;
 }
 
@@ -465,8 +465,8 @@ textarea:focus {
   min-height: 32px;
   border-radius: 999px;
   padding: 0 10px;
-  background: #fff1f6;
-  color: var(--pink-dark);
+  background: #edf6ef;
+  color: var(--teal-dark);
   font-size: 0.82rem;
   font-weight: 900;
 }
@@ -493,6 +493,13 @@ textarea:focus {
 
 .entry-actions .danger-button {
   color: #b72b42;
+}
+
+.privacy-note {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
 }
 
 [hidden] {
