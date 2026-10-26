@@ -2,12 +2,12 @@ const STORAGE_KEY = "tiny-diary.entries.v1";
 
 const moods = {
   happy: {
-    label: "うれしい",
+    label: "よく進んだ",
     face: "😊",
     score: 5,
   },
   calm: {
-    label: "おだやか",
+    label: "順調",
     face: "😌",
     score: 4,
   },
@@ -17,18 +17,18 @@ const moods = {
     score: 3,
   },
   tired: {
-    label: "つかれた",
+    label: "少し難しい",
     face: "😵‍💫",
     score: 2,
   },
   sad: {
-    label: "しょんぼり",
+    label: "復習したい",
     face: "🥲",
     score: 1,
   },
 };
 
-const form = document.querySelector("#diary-form");
+const form = document.querySelector("#study-form");
 const dateInput = document.querySelector("#entry-date");
 const noteInput = document.querySelector("#entry-note");
 const clearButton = document.querySelector("#clear-button");
@@ -171,13 +171,13 @@ function renderEntries() {
 
   if (entries.length > 0 && filteredEntries.length === 0) {
     emptyState.innerHTML = `
-      <strong>条件に合う記録がありません</strong>
-      <span>検索ワードや気分フィルターを変えてみてください。</span>
+      <strong>条件に合う学習記録がありません</strong>
+      <span>検索ワードや手ごたえのフィルターを変えてみてください。</span>
     `;
   } else {
     emptyState.innerHTML = `
-      <strong>まだ記録がありません</strong>
-      <span>今日の気分と一言メモを保存すると、ここに表示されます。</span>
+      <strong>学習記録はまだありません</strong>
+      <span>学んだことや今日の手ごたえを記録すると、ここに表示されます。</span>
     `;
   }
 
@@ -200,7 +200,7 @@ function renderBiorhythm() {
   if (entries.length === 0) {
     rhythmChart.innerHTML = "";
     biorhythmMessage.textContent = "記録を保存すると表示されます";
-    biorhythmDetail.textContent = "最近7件の気分を波形グラフで表示します。";
+    biorhythmDetail.textContent = "最近7件の学習の手ごたえを波形グラフで表示します。";
     return;
   }
 
@@ -220,7 +220,7 @@ function renderBiorhythm() {
   rhythmChart.innerHTML = createBiorhythmSvg(recentEntries);
 
   biorhythmMessage.textContent = getBiorhythmMessage(trend, average, recentEntries.length);
-  biorhythmDetail.textContent = `最近${recentEntries.length}件の平均: ${average.toFixed(1)} / 5`;
+  biorhythmDetail.textContent = `最近${recentEntries.length}件の手ごたえの平均: ${average.toFixed(1)} / 5`;
 }
 
 function createBiorhythmSvg(recentEntries) {
@@ -267,18 +267,18 @@ function createBiorhythmSvg(recentEntries) {
       class="rhythm-svg"
       viewBox="0 0 ${width} ${height}"
       role="img"
-      aria-label="最近${recentEntries.length}件の気分バイオリズム"
+      aria-label="最近${recentEntries.length}件の学習の手ごたえ"
     >
       <defs>
         <linearGradient id="rhythm-line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#6aa9ff" />
-          <stop offset="45%" stop-color="#79c7b3" />
-          <stop offset="75%" stop-color="#ffd166" />
-          <stop offset="100%" stop-color="#f47fa2" />
+          <stop offset="0%" stop-color="#79b5c8" />
+          <stop offset="45%" stop-color="#9ccdb1" />
+          <stop offset="75%" stop-color="#e8bd65" />
+          <stop offset="100%" stop-color="#5ca184" />
         </linearGradient>
         <linearGradient id="rhythm-area-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#f47fa2" stop-opacity="0.24" />
-          <stop offset="100%" stop-color="#6aa9ff" stop-opacity="0.03" />
+          <stop offset="0%" stop-color="#5ca184" stop-opacity="0.24" />
+          <stop offset="100%" stop-color="#79b5c8" stop-opacity="0.03" />
         </linearGradient>
       </defs>
       <g class="rhythm-grid" aria-hidden="true">
@@ -338,34 +338,34 @@ function buildSinglePointWave(point, chartWidth) {
 
 function getBiorhythmMessage(trend, average, entryLength) {
   if (entryLength === 1) {
-    return "最初のリズムを記録しました";
+    return "最初の学習リズムを記録しました";
   }
 
   if (trend >= 2) {
-    return "上向きのリズム";
+    return "学習がよく進んでいます";
   }
 
   if (trend >= 0.5) {
-    return "少し上向き";
+    return "少しずつ調子が上がっています";
   }
 
   if (trend <= -2) {
-    return "休むサイン多め";
+    return "復習や休憩を取り入れてみましょう";
   }
 
   if (trend <= -0.5) {
-    return "少し下がり気味";
+    return "少し難しさを感じているようです";
   }
 
   if (average >= 4) {
-    return "安定していい流れ";
+    return "安定して学習できています";
   }
 
   if (average <= 2.2) {
-    return "ゆっくり整えたいリズム";
+    return "自分のペースで復習してみましょう";
   }
 
-  return "安定したリズム";
+  return "自分のペースで進められています";
 }
 
 function render() {
@@ -380,7 +380,7 @@ function resetForm() {
   dateInput.value = getTodayIso();
   clearSelectedMood();
   noteInput.value = "";
-  editingLabel.textContent = "今日の記録を書いています";
+  editingLabel.textContent = "今日の学習記録を作成中";
   updateCharCount();
   updateSaveState("未保存");
   renderBiorhythm();
@@ -398,7 +398,7 @@ function loadEntryIntoForm(entry) {
   dateInput.value = entry.date;
   setSelectedMood(entry.mood);
   noteInput.value = entry.note;
-  editingLabel.textContent = `${formatDate(entry.date)}の記録を編集中`;
+  editingLabel.textContent = `${formatDate(entry.date)}の学習記録を編集中`;
   updateCharCount();
   updateSaveState("編集中");
   renderBiorhythm();
@@ -453,7 +453,7 @@ dateInput.addEventListener("change", () => {
 
   clearSelectedMood();
   noteInput.value = "";
-  editingLabel.textContent = `${formatDate(dateInput.value)}の記録を書いています`;
+  editingLabel.textContent = `${formatDate(dateInput.value)}の学習記録を作成中`;
   updateCharCount();
   updateSaveState("未保存");
   renderBiorhythm();
@@ -493,7 +493,7 @@ entryList.addEventListener("click", (event) => {
   }
 
   if (button.dataset.action === "delete") {
-    const shouldDelete = confirm(`${formatDate(entry.date)}の記録を削除しますか？`);
+    const shouldDelete = confirm(`${formatDate(entry.date)}の学習記録を削除しますか？`);
 
     if (!shouldDelete) {
       return;
